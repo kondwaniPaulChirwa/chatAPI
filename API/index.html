@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <button onclick="sendMessage()">Send msg</button>
+
+</body>
+<script>
+        // Create WebSocket connection.
+        const socket = new WebSocket("ws://localhost:8800");
+
+        // Connection opened
+        socket.addEventListener("open", (event) => {
+        socket.send("Hello Server!hy");
+        });
+
+        // Listen for messages
+        socket.addEventListener("message", (event) => {
+        console.log("Message from server ", event.data);
+        });
+
+
+    const sendMessage = () => {
+        socket.send("Hello serever")
+    }
+</script>
+</html>
